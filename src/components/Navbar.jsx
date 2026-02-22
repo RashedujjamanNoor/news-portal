@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 
 export const Navbar = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 w-full mt-4">
+    <div className="grid grid-cols-3 gap-4 w-full my-4">
       <div className="col-span-1"></div>
       <div className="col-span-1 flex justify-center items-center gap-4 text-accent ">
         <NavLink>Home</NavLink>

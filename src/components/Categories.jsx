@@ -3,20 +3,26 @@ import { NavLink, useLoaderData } from "react-router";
 
 export const Categories = () => {
   const [category, setCategory] = useState([]);
-  const news = useLoaderData();
   useEffect(() => {
-    fetch("categories.json")
+    fetch("/categories.json")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      {category.map((data) => (
-        <div key={data.id}>
-          <NavLink to={`category/${data.id}`}>{data.name}</NavLink>
+    <div>
+      <div className="flex flex-col gap-1 text-accent ">
+        <div>
+          <p className="font-semibold text-xl">All Category</p>
         </div>
-      ))}
+        {category.map((data) => (
+          <NavLink className="px-4 py-2" to={`category/${data.id}`}>
+            <p key={data.id} className=" px-4 py-2 ">
+              {data.name}
+            </p>
+          </NavLink>
+        ))}
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { Latest } from "../components/Latest";
 import { Navbar } from "../components/Navbar";
 import { Categories } from "../components/Categories";
+import { RightAside } from "../components/RightAside";
 
 export const HomeLayout = () => {
   return (
@@ -17,15 +18,19 @@ export const HomeLayout = () => {
       <section className="w-full">
         <Navbar />
       </section>
-      <section className="left">
-        <aside>
-          <Categories />
-        </aside>
-      </section>
-      <section className="mid">
-        <Outlet></Outlet>
-      </section>
-      <section className="right"></section>
+      <main className=" w-full grid grid-cols-12 gap-4">
+        <section className="left col-span-3 ">
+          <aside className="sticky top-0 z-50">
+            <Categories />
+          </aside>
+        </section>
+        <section className="mid col-span-6 flex justify-center">
+          <Outlet></Outlet>
+        </section>
+        <section className="right col-span-3">
+          <RightAside />
+        </section>
+      </main>
     </div>
   );
 };

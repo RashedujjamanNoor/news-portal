@@ -2,5 +2,5 @@ import React from "react";
 import { Navigate } from "react-router";
 
 export const Home = () => {
-  return <Navigate to=""></Navigate>;
+  return <Navigate to="category/2"></Navigate>;
 };
