@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../provider/AuthProvider";
 
 export const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   return (
     <div className="grid grid-cols-3 gap-4 w-full my-4">
       <div className="col-span-1"></div>
@@ -15,9 +17,15 @@ export const Navbar = () => {
           <img src="vite.svg" alt="" className="w-10 rounded-full bg-white" />
         </div>
         <div>
-          <button className="btn btn-primary">
-            <Link>Login</Link>
-          </button>
+          {user ? (
+            <button onClick={() => logout()} className="btn btn-primary">
+              <Link>Log Out</Link>
+            </button>
+          ) : (
+            <button className="btn btn-primary">
+              <Link to="/auth/login">Login</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
