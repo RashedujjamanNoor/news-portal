@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 export const LoginPage = () => {
-  const { loginWithGoogle, setUser } = useContext(AuthContext);
+  const { loginWithGoogle, setUser, login } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleGoogleSignIn = () => {
     loginWithGoogle()
       .then((res) => {
@@ -13,13 +14,27 @@ export const LoginPage = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass = e.target.password.value;
+    console.log(email, pass);
+    try {
+      await login(email, pass);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="bg-base-300 min-h-screen flex justify-center items-center px-2">
       <div className="card-body p-15 bg-white rounded-sm max-w-150">
         <div className="flex justify-center font-bold text-xl text-accent">
           <h2>Login your account</h2>
         </div>
-        <form className="fieldset">
+        <form onSubmit={handleLogin} className="fieldset">
           <label className="label font-bold">Email</label>
           <input
             type="email"
@@ -37,7 +52,9 @@ export const LoginPage = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn bg-gray-800 mt-4 text-white">Login</button>
+          <button type="submit" className="btn bg-gray-800 mt-4 text-white">
+            Login
+          </button>
         </form>
         <button
           className="btn bg-white text-black border-[#e5e5e5]"
