@@ -11,15 +11,17 @@ export const Categories = () => {
 
   return (
     <div>
-      <div className="flex flex-col gap-1 text-accent ">
+      <div className="flex flex-col gap-1 text-accent categories-active">
         <div>
           <p className="font-semibold text-xl">All Category</p>
         </div>
         {category.map((data) => (
-          <NavLink className="px-4 py-2" to={`category/${data.id}`}>
-            <p key={data.id} className=" px-4 py-2 ">
-              {data.name}
-            </p>
+          <NavLink
+            key={data.id}
+            className="px-4 py-2"
+            to={`category/${data.id}`}
+          >
+            <p className=" px-4 py-2 ">{data.name}</p>
           </NavLink>
         ))}
       </div>

@@ -17,6 +17,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-a.active {
+.categories-active a.active {
   background-color: #e7e7e7;
 }
