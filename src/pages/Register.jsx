@@ -13,6 +13,25 @@ export const Register = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const pass = e.target.password.value;
+    if (pass.length < 6) {
+      return Swal.fire({
+        title: "Password Must Be At Least 6 Charecter",
+        showClass: {
+          popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `,
+        },
+        hideClass: {
+          popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `,
+        },
+      });
+    }
     const data = {
       displayName: name,
     };

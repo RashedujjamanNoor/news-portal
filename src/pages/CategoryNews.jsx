@@ -9,7 +9,7 @@ export const CategoryNews = () => {
   const categoryData = news.filter(
     (filterNews) => filterNews.category_id == id,
   );
-  console.log(categoryData);
+  //console.log(categoryData);
   return (
     <Suspense
       fallback={<span className="loading loading-dots loading-xl"></span>}
@@ -55,7 +55,12 @@ export const CategoryNews = () => {
                 {newsData.details.length > 200 ? (
                   <>
                     <p>{newsData.details.slice(0, 200)}...</p>
-                    <Link className="text-orange-500">Read More</Link>
+                    <Link
+                      to={`/news/${newsData.id}`}
+                      className="text-orange-500"
+                    >
+                      Read More
+                    </Link>
                   </>
                 ) : (
                   newsData.details

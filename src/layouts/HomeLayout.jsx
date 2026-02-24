@@ -8,7 +8,7 @@ import { RightAside } from "../components/RightAside";
 
 export const HomeLayout = () => {
   return (
-    <div className="flex justify-center flex-col items-center px-4 max-w-300 mx-auto">
+    <div className="flex justify-center flex-col items-center px-4  mx-auto">
       <header>
         <Header />
       </header>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 export const LoginPage = () => {
   const { loginWithGoogle, setUser, login } = useContext(AuthContext);
@@ -19,7 +20,26 @@ export const LoginPage = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const pass = e.target.password.value;
-    console.log(email, pass);
+    if (pass.length < 6) {
+      return Swal.fire({
+        title: "Password Must Be At Least 6 Charecter",
+        showClass: {
+          popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `,
+        },
+        hideClass: {
+          popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `,
+        },
+      });
+    }
+    //console.log(email, pass);
     try {
       await login(email, pass);
       navigate("/");
